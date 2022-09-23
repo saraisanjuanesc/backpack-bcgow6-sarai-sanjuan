@@ -1,4 +1,3 @@
-
 var nombre string //La variable no puede iniciar con número
 var apellido string //Correcta
 var int edad //Correcta

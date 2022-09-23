@@ -10,5 +10,4 @@ func main() {
 	var nombre string = "Julián"
 
 	fmt.Print("Nombre: ", nombre, apellido, " edad: ", edad, " sueldo: ", sueldo, boolean)
-
 }

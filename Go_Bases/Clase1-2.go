@@ -9,6 +9,7 @@ func main() {
 	temp = 21
 	humedad = 73
 	presion = 3
+
 	fmt.Println("La temperatura es: ", temp, " La humedad es: ", humedad, " Y la presion es: ", presion)
 
 }
