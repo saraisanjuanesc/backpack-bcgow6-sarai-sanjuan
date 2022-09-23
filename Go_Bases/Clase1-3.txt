@@ -1,0 +1,8 @@
+
+var nombre string //La variable no puede iniciar con número
+var apellido string //Correcta
+var int edad //Correcta
+apellido := 6 //La variable no puede iniciar con número
+var licencia_de_conducir = true //Correcta
+var estatura_de_la_persona int //La variable tiene no puede tener espaciosß
+cantidadDeHijos := 2 //Correcta
