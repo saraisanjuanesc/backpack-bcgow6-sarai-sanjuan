@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	data, err := os.ReadFile("./inventorylist.csv")
+	data, err := os.ReadFile("../inventorylist.csv")
 	if err != nil {
 		fmt.Println("ERROR!\n Cannot read file ")
 	} else {

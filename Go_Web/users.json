@@ -1,0 +1,30 @@
+
+    [
+        {"id" : 1,
+        "name" : "Sarai",
+        "last_name": "San Juan",
+        "email": "sarai.sanjuanesc@mercadolibre.com.mx",
+        "age": 23,
+        "height": 161,
+        "status": true,
+        "creation_date": "2022-05-15T10:12:11+06:00"
+        },
+        {"id" : 2,
+        "name" : "Martin",
+        "last_name": "Peralta",
+        "email": "martin.peralta@mercadolibre.com.mx",
+        "age": 26,
+        "height": 182,
+        "status": true,
+        "creation_date": "2019-02-22T10:12:11+06:00"
+        },
+        {"id" : 3,
+        "name" : "José Pablo",
+        "last_name": "Gutierrez",
+        "email": "pablo.guitierrez@mercadolibre.com.mx",
+        "age": 22,
+        "height": 176,
+        "status": false,
+        "creation_date": "2016-01-09T10:12:11+06:00"
+        }
+    ]

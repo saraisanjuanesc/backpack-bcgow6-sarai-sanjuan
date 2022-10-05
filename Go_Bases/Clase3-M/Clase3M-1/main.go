@@ -19,7 +19,7 @@ func main() {
 		text += fmt.Sprintf("%s;%.2f;%d\n", value.ID, value.Price, value.Number)
 	}
 	t := []byte(text)
-	err := os.WriteFile("./inventorylist.csv", t, 0644)
+	err := os.WriteFile("../inventorylist.csv", t, 0644)
 	if err != nil {
 		fmt.Println("ERROR \nCould not write to the file! ")
 	} else {
