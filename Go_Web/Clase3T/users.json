@@ -1,0 +1,32 @@
+[
+ {
+  "id": 1,
+  "name": "Rosita",
+  "last_name": "Guitierrez",
+  "email": "rosa.gutierrez@mercadolibre.com.mx",
+  "age": 27,
+  "height": 165,
+  "status": true,
+  "creation_date": "2022-05-15T10:12:11+06:00"
+ },
+ {
+  "id": 3,
+  "name": "Marcos",
+  "last_name": "Guitierrez",
+  "email": "marcos.gutierrez@mercadolibre.com.mx",
+  "age": 27,
+  "height": 165,
+  "status": true,
+  "creation_date": "2022-05-15T10:12:11+06:00"
+ },
+ {
+  "id": 4,
+  "name": "Daniel",
+  "last_name": "Ramirez Rosas",
+  "email": "daniel.ramirez@mercadolibre.com.mx",
+  "age": 27,
+  "height": 165,
+  "status": true,
+  "creation_date": "2022-05-15T10:12:11+06:00"
+ }
+]
