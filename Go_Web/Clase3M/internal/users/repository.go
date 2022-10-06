@@ -74,7 +74,7 @@ func (r *repository) Delete(id int) error {
 	var index int
 	for i := range listUsers {
 		if listUsers[i].ID == id {
-			index = 1
+			index = i
 			delete = true
 		}
 	}
