@@ -1,0 +1,22 @@
+[
+ {
+  "id": 2,
+  "name": "José Juan",
+  "last_name": "Juarez Hernandez",
+  "email": "mayte.valdez@mercadolibre.com.mx",
+  "age": 29,
+  "height": 175,
+  "status": true,
+  "creation_date": "2022-05-15T10:12:11+06:00"
+ },
+ {
+  "id": 3,
+  "name": "Martha Lili",
+  "last_name": "Ortiz Mendoza",
+  "email": "martha.ortiz@mercadolibre.com",
+  "age": 25,
+  "height": 162,
+  "status": true,
+  "creation_date": "15/09/2022"
+ }
+]
