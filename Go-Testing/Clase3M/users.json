@@ -1,0 +1,22 @@
+[
+ {
+  "id": 1,
+  "name": "Jose",
+  "last_name": "Juarez",
+  "email": "mayte.valdez@mercadolibre.com.mx",
+  "age": 29,
+  "height": 175,
+  "status": true,
+  "creation_date": "2022-05-15T10:12:11+06:00"
+ },
+ {
+  "id": 2,
+  "name": "Jose",
+  "last_name": "Juarez",
+  "email": "mayte.valdez@mercadolibre.com.mx",
+  "age": 29,
+  "height": 175,
+  "status": true,
+  "creation_date": "2022-05-15T10:12:11+06:00"
+ }
+]
