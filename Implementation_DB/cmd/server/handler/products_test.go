@@ -22,7 +22,7 @@ func createServer() *gin.Engine {
 
 	_, db := db.ConnectDatabase()
 	repo := products.NewRepository(db)
-	serv := products.Service(repo)
+	serv := products.NewService(repo)
 	p := NewProduct(serv)
 
 	r := gin.Default()
@@ -30,6 +30,8 @@ func createServer() *gin.Engine {
 
 	pr.GET("/:name", p.GetByName())
 	pr.POST("/", p.Store())
+	pr.GET("/", p.GetAll())
+	pr.DELETE("/:id", p.Delete())
 
 	return r
 }
@@ -65,4 +67,24 @@ func TestGetByName(t *testing.T) {
 	r.ServeHTTP(rr, req)
 
 	assert.Equal(t, http.StatusOK, rr.Code)
+}
+
+func TestGetAll(t *testing.T) {
+	r := createServer()
+
+	req, rr := createRequest(http.MethodGet, "/api/v1/products/", "")
+
+	r.ServeHTTP(rr, req)
+
+	assert.Equal(t, http.StatusOK, rr.Code)
+}
+
+func TestDelete(t *testing.T) {
+	r := createServer()
+
+	req, rr := createRequest(http.MethodDelete, "/api/v1/products/12", "")
+
+	r.ServeHTTP(rr, req)
+
+	assert.Equal(t, http.StatusNoContent, rr.Code)
 }

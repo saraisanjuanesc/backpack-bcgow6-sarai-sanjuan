@@ -23,6 +23,8 @@ func main() {
 
 	pr.POST("/", p.Store())
 	pr.GET("/:name", p.GetByName())
+	pr.GET("/", p.GetAll())
+	pr.DELETE("/:id", p.Delete())
 
 	r.Run()
 
