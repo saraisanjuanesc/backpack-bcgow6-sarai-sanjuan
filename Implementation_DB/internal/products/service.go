@@ -11,6 +11,7 @@ type Service interface {
 	Store(ctx context.Context, p domains.Product) (int, error)
 	GetAll(ctx context.Context) ([]domains.Product, error)
 	DeleteS(ctx context.Context, id int64) error
+	Update(ctx context.Context, id int, name, ptype string, count int, price float64) (domains.Product, error)
 }
 
 type service struct {
@@ -35,4 +36,8 @@ func (s *service) GetAll(ctx context.Context) ([]domains.Product, error) {
 
 func (s *service) DeleteS(ctx context.Context, id int64) error {
 	return s.repository.Delete(ctx, id)
+}
+
+func (s *service) Update(ctx context.Context, id int, name, ptype string, count int, price float64) (domains.Product, error) {
+	return s.repository.Update(ctx, id, name, ptype, count, price)
 }

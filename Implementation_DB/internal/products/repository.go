@@ -13,6 +13,7 @@ type Repository interface {
 	Store(ctx context.Context, p domains.Product) (int, error)
 	GetAll(ctx context.Context) ([]domains.Product, error)
 	Delete(ctx context.Context, id int64) error
+	Update(ctx context.Context, id int, name, ptype string, count int, price float64) (domains.Product, error)
 }
 type repository struct {
 	db *sql.DB
@@ -27,7 +28,7 @@ func NewRepository(db *sql.DB) Repository {
 const (
 	GET_BY_NAME  = "SELECT id, name, type, count, price FROM products WHERE name=?;"
 	SAVE_PRODUCT = "INSERT INTO products (name, type, count, price) VALUES (?,?,?,?);"
-	UPDATE       = "UPDATE products SET name=?, type=?, count=?, price=? WHERE id=?;"
+	UPDATE       = "UPDATE products SET name = ?, type = ?, count = ?, price = ? WHERE id = ?;"
 	GET_ALL      = "SELECT id, name, type, count, price FROM products;"
 	DELETE       = "DELETE FROM products WHERE id=?;"
 )
@@ -116,4 +117,20 @@ func (r *repository) GetAll_Context(ctx context.Context) ([]domains.Product, err
 	}
 
 	return products, nil
+}
+
+func (r *repository) Update(ctx context.Context, id int, name, ptype string, count int, price float64) (domains.Product, error) {
+	stmt, err := r.db.Prepare(UPDATE)
+
+	if err != nil {
+		return domains.Product{}, err
+	}
+	defer stmt.Close()
+
+	product := domains.Product{ID: id, Name: name, Type: ptype, Count: count, Price: price}
+	_, err = stmt.Exec(name, ptype, count, price, id)
+	if err != nil {
+		return domains.Product{}, err
+	}
+	return product, nil
 }

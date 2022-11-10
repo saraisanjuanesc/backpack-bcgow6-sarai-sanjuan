@@ -60,6 +60,15 @@ func (p *Product) Store() gin.HandlerFunc {
 			}
 		}
 
+		if len(emptyFiled) > 0 {
+			for _, v := range emptyFiled {
+				if v != "ID" {
+					ctx.JSON(400, web.NewResponse(400, nil, "El campo: "+v+" es requerido"))
+				}
+			}
+			return
+		}
+
 		id, err := p.service.Store(ctx, newproduct)
 		if err != nil {
 			ctx.JSON(http.StatusConflict, web.NewResponse(http.StatusConflict, nil, err.Error()))
@@ -101,4 +110,47 @@ func (p *Product) Delete() gin.HandlerFunc {
 		}
 		ctx.JSON(http.StatusNoContent, web.NewResponse(http.StatusNoContent, nil, ""))
 	}
+}
+
+func (p *Product) Update() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		var req request_product
+
+		id, err := strconv.Atoi(ctx.Param("id"))
+		if err != nil {
+			ctx.JSON(400, web.NewResponse(400, nil, "ID inválido"))
+			return
+		}
+
+		err = ctx.ShouldBindJSON(&req)
+		if err != nil {
+			ctx.JSON(404, web.NewResponse(404, nil, err.Error()))
+			return
+		}
+
+		var emptyFiled []string
+		values := reflect.ValueOf(req)
+		for i := 0; i < values.NumField(); i++ {
+			if values.Field(i).Interface() == reflect.Zero(values.Field(i).Type()).Interface() {
+				emptyFiled = append(emptyFiled, values.Type().Field(i).Name)
+			}
+		}
+
+		if len(emptyFiled) > 0 {
+			for _, v := range emptyFiled {
+				if v != "ID" {
+					ctx.JSON(400, web.NewResponse(400, nil, "El campo: "+v+" es requerido"))
+				}
+			}
+			return
+		}
+
+		productUpdated, err := p.service.Update(ctx, id, req.Name, req.Type, req.Count, req.Price)
+		if err != nil {
+			ctx.JSON(404, web.NewResponse(404, nil, err.Error()))
+			return
+		}
+		ctx.JSON(http.StatusOK, web.NewResponse(http.StatusOK, productUpdated, ""))
+	}
+
 }
